@@ -13,8 +13,8 @@ const _spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'RouteDrop - P2P Parcel Delivery | Tumkur to Bengaluru',
-  description: 'Send parcels from Tumkur to Bengaluru in 2 hours. Connect with verified commuters for fast, affordable, and secure peer-to-peer delivery.',
+  title: 'RouteDrop - P2P Parcel Delivery Marketplace',
+  description: 'Send parcels across India with verified travelers. Fast, affordable, and secure peer-to-peer delivery powered by everyday commuters.',
   generator: 'v0.app',
   manifest: '/manifest.json',
   icons: {
