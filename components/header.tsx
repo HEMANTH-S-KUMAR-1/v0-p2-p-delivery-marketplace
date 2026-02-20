@@ -23,22 +23,22 @@ export function Header() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex">
           <Link href="/send" className="px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Send Package
+            Send Parcel
           </Link>
           <Link href="/travel" className="px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Earn Money
+            Post a Trip
           </Link>
           <Link href="/track" className="px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Track Delivery
+            Track
           </Link>
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
           <Button variant="outline" size="sm" asChild>
-            <Link href="/send">Send a Package</Link>
+            <Link href="/send">Send a Parcel</Link>
           </Button>
           <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" asChild>
-            <Link href="/travel">Start Earning</Link>
+            <Link href="/travel">Earn as Traveler</Link>
           </Button>
         </div>
 
@@ -61,29 +61,29 @@ export function Header() {
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Send Package
+              Send Parcel
             </Link>
             <Link
               href="/travel"
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Earn Money
+              Post a Trip
             </Link>
             <Link
               href="/track"
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Track Delivery
+              Track
             </Link>
           </nav>
           <div className="mt-3 flex flex-col gap-2">
             <Button variant="outline" asChild className="w-full">
-              <Link href="/send">Send a Package</Link>
+              <Link href="/send">Send a Parcel</Link>
             </Button>
             <Button asChild className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              <Link href="/travel">Start Earning</Link>
+              <Link href="/travel">Earn as Traveler</Link>
             </Button>
           </div>
         </div>

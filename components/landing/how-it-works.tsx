@@ -4,20 +4,20 @@ const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Post Your Parcel",
-    description: "Enter your pickup and drop-off locations, select the item type, and get an instant price quote in seconds.",
+    title: "Search Your Route",
+    description: "Enter your origin and destination cities, pick a date, and instantly see verified travelers heading your way.",
   },
   {
     icon: UserCheck,
     step: "02",
-    title: "Traveler Accepts",
-    description: "A verified commuter heading along the Tumkur-Bengaluru route picks up your delivery request.",
+    title: "Book a Traveler",
+    description: "Browse traveler profiles, compare prices and trunk space, then book securely. Funds are held in escrow.",
   },
   {
     icon: PackageCheck,
     step: "03",
     title: "Delivered Safely",
-    description: "Track the milestone updates in real-time. Confirm delivery with OTP. Payment released from escrow.",
+    description: "Track milestone updates in real-time. Confirm delivery with OTP. Payment released to the traveler instantly.",
   },
 ]
 

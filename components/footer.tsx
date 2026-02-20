@@ -19,7 +19,7 @@ export function Footer() {
           <span className="cursor-default">Privacy</span>
         </nav>
         <p className="text-xs text-muted-foreground">
-          &copy; 2026 RouteDrop. Tumkur — Bengaluru.
+          &copy; 2026 RouteDrop. Delivering across India.
         </p>
       </div>
     </footer>

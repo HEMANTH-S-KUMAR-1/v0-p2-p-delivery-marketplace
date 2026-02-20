@@ -1,7 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { PackageOpen, Route, MapPinCheck, KeyRound, CheckCircle2, Circle, Loader2 } from "lucide-react"
+import {
+  PackageOpen, Route, MapPinCheck, KeyRound,
+  CheckCircle2, Loader2,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -23,15 +26,15 @@ const milestones: Milestone[] = [
   },
   {
     id: 2,
-    label: "On the Highway",
-    description: "En route via NH48 / Tumkur Road",
+    label: "In Transit",
+    description: "En route to destination city",
     icon: Route,
-    buttonText: "Mark On Highway",
+    buttonText: "Mark In Transit",
   },
   {
     id: 3,
-    label: "Reached Bengaluru",
-    description: "Arrived in Bengaluru city limits",
+    label: "Reached Destination City",
+    description: "Arrived in the destination city",
     icon: MapPinCheck,
     buttonText: "Mark Arrived",
   },
@@ -45,14 +48,13 @@ const milestones: Milestone[] = [
 ]
 
 export function MilestoneTracker() {
-  const [currentStep, setCurrentStep] = useState(0) // 0 = none done, 4 = all done
+  const [currentStep, setCurrentStep] = useState(0)
   const [otpValue, setOtpValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [completed, setCompleted] = useState(false)
 
   const handleAdvance = (stepId: number) => {
     if (stepId === 4) {
-      // OTP step
       if (otpValue.length !== 4) return
       setIsLoading(true)
       setTimeout(() => {
@@ -72,28 +74,38 @@ export function MilestoneTracker() {
           <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-secondary/10">
             <CheckCircle2 className="h-12 w-12 text-secondary" />
           </div>
-          <h2 className="mb-2 text-2xl font-bold text-foreground">Delivery Complete!</h2>
-          <p className="mb-2 text-muted-foreground">The parcel has been successfully delivered.</p>
-          <p className="mb-8 text-sm text-muted-foreground">Payment of <span className="font-bold text-secondary">{"₹"}150</span> has been released from escrow.</p>
+          <h2 className="mb-2 text-2xl font-bold text-foreground">
+            Delivery Complete!
+          </h2>
+          <p className="mb-2 text-muted-foreground">
+            The parcel has been successfully delivered.
+          </p>
+          <p className="mb-8 text-sm text-muted-foreground">
+            Payment of{" "}
+            <span className="font-bold text-secondary">{"₹"}250</span> has been
+            released from escrow.
+          </p>
 
           <div className="mb-8 w-full rounded-xl border border-border bg-card p-5">
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Tracking ID</span>
-                <span className="font-mono font-bold text-foreground">RD-2026-0847</span>
+                <span className="font-mono font-bold text-foreground">
+                  RD-2026-0847
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Route</span>
-                <span className="text-foreground">Tumkur Bus Stand → Majestic</span>
+                <span className="text-foreground">Mumbai → Pune</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Duration</span>
-                <span className="text-foreground">1h 48m</span>
+                <span className="text-foreground">3h 12m</span>
               </div>
               <div className="h-px bg-border" />
               <div className="flex justify-between font-bold">
                 <span className="text-foreground">Earnings</span>
-                <span className="text-secondary">{"₹"}150</span>
+                <span className="text-secondary">{"₹"}250</span>
               </div>
             </div>
           </div>
@@ -102,7 +114,10 @@ export function MilestoneTracker() {
             <Button variant="outline" className="flex-1" asChild>
               <Link href="/">Home</Link>
             </Button>
-            <Button className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/90" asChild>
+            <Button
+              className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              asChild
+            >
               <Link href="/travel">View More Deliveries</Link>
             </Button>
           </div>
@@ -119,7 +134,12 @@ export function MilestoneTracker() {
           Live
         </span>
       </div>
-      <p className="mb-8 text-sm text-muted-foreground">Tracking ID: <span className="font-mono font-semibold text-foreground">RD-2026-0847</span></p>
+      <p className="mb-8 text-sm text-muted-foreground">
+        Tracking ID:{" "}
+        <span className="font-mono font-semibold text-foreground">
+          RD-2026-0847
+        </span>
+      </p>
 
       {/* Route summary card */}
       <div className="mb-8 rounded-xl border border-border bg-card p-4">
@@ -130,14 +150,14 @@ export function MilestoneTracker() {
             <div className="h-3 w-3 rounded-full border-2 border-primary bg-primary/20" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-medium text-foreground">Tumkur Bus Stand</p>
-            <p className="mb-2 text-xs text-muted-foreground">Tumkur</p>
-            <p className="text-sm font-medium text-foreground">Majestic (Kempegowda Bus Station)</p>
-            <p className="text-xs text-muted-foreground">Bengaluru</p>
+            <p className="text-sm font-medium text-foreground">Mumbai</p>
+            <p className="mb-2 text-xs text-muted-foreground">Origin</p>
+            <p className="text-sm font-medium text-foreground">Pune</p>
+            <p className="text-xs text-muted-foreground">Destination</p>
           </div>
           <div className="text-right">
-            <p className="text-lg font-bold text-secondary">+{"₹"}150</p>
-            <p className="text-xs text-muted-foreground">Document</p>
+            <p className="text-lg font-bold text-secondary">+{"₹"}250</p>
+            <p className="text-xs text-muted-foreground">Small Box</p>
           </div>
         </div>
       </div>
@@ -179,7 +199,11 @@ export function MilestoneTracker() {
               </div>
 
               {/* Content */}
-              <div className={`flex-1 pb-8 ${index === milestones.length - 1 ? "pb-0" : ""}`}>
+              <div
+                className={`flex-1 pb-8 ${
+                  index === milestones.length - 1 ? "pb-0" : ""
+                }`}
+              >
                 <p
                   className={`text-sm font-bold ${
                     isDone
@@ -191,7 +215,9 @@ export function MilestoneTracker() {
                 >
                   {milestone.label}
                 </p>
-                <p className="mb-3 text-xs text-muted-foreground">{milestone.description}</p>
+                <p className="mb-3 text-xs text-muted-foreground">
+                  {milestone.description}
+                </p>
 
                 {/* OTP Input for last step */}
                 {isCurrent && milestone.id === 4 && (
@@ -203,7 +229,9 @@ export function MilestoneTracker() {
                       type="text"
                       maxLength={4}
                       value={otpValue}
-                      onChange={(e) => setOtpValue(e.target.value.replace(/\D/g, ""))}
+                      onChange={(e) =>
+                        setOtpValue(e.target.value.replace(/\D/g, ""))
+                      }
                       placeholder="_ _ _ _"
                       className="w-32 rounded-lg border border-input bg-card px-4 py-2.5 text-center font-mono text-lg tracking-[0.5em] text-foreground transition-colors focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                     />
@@ -215,7 +243,10 @@ export function MilestoneTracker() {
                     size="sm"
                     className="gap-2 bg-secondary text-secondary-foreground hover:bg-secondary/90 disabled:opacity-50"
                     onClick={() => handleAdvance(milestone.id)}
-                    disabled={isLoading || (milestone.id === 4 && otpValue.length !== 4)}
+                    disabled={
+                      isLoading ||
+                      (milestone.id === 4 && otpValue.length !== 4)
+                    }
                   >
                     {isLoading ? (
                       <>
@@ -229,7 +260,9 @@ export function MilestoneTracker() {
                 )}
 
                 {isDone && (
-                  <span className="text-xs font-medium text-secondary">Completed</span>
+                  <span className="text-xs font-medium text-secondary">
+                    Completed
+                  </span>
                 )}
               </div>
             </div>

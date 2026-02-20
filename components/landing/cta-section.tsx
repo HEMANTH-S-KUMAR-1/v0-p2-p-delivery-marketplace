@@ -10,7 +10,7 @@ export function CtaSection() {
           Ready to Send Your First Parcel?
         </h2>
         <p className="mb-10 text-lg leading-relaxed text-primary-foreground/70">
-          Join hundreds of users who trust RouteDrop for fast, affordable deliveries between Tumkur and Bengaluru.
+          Join thousands of users who trust RouteDrop for fast, affordable peer-to-peer deliveries across India.
         </p>
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button
