@@ -1,0 +1,17 @@
+{
+  "name": "RouteDrop - P2P Delivery",
+  "short_name": "RouteDrop",
+  "description": "Send parcels from Tumkur to Bengaluru in 2 hours",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#1a2744",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
