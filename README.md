@@ -230,4 +230,4 @@ v0-p2-p-delivery-marketplace/
 
 **Private — All rights reserved.**
 
-© 2024 RouteDrop. Unauthorized copying, distribution, or modification of this project is strictly prohibited.
+© 2026 RouteDrop. Unauthorized copying, distribution, or modification of this project is strictly prohibited.
