@@ -1,12 +1,26 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
-import { Package, Menu, X } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Package, Menu, X, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { createClient } from "@/lib/supabase/client"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      setIsLoggedIn(!!data.user)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => setIsLoggedIn(!!session)
+    )
+    return () => subscription.unsubscribe()
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
@@ -34,12 +48,23 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/send">Send a Parcel</Link>
-          </Button>
-          <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" asChild>
-            <Link href="/travel">Earn as Traveler</Link>
-          </Button>
+          {isLoggedIn ? (
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/dashboard" className="gap-1.5">
+                <User className="h-3.5 w-3.5" />
+                Dashboard
+              </Link>
+            </Button>
+          ) : (
+            <>
+              <Button variant="outline" size="sm" asChild>
+                <Link href="/login">Sign In</Link>
+              </Button>
+              <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90" asChild>
+                <Link href="/signup">Sign Up</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -79,12 +104,23 @@ export function Header() {
             </Link>
           </nav>
           <div className="mt-3 flex flex-col gap-2">
-            <Button variant="outline" asChild className="w-full">
-              <Link href="/send">Send a Parcel</Link>
-            </Button>
-            <Button asChild className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              <Link href="/travel">Earn as Traveler</Link>
-            </Button>
+            {isLoggedIn ? (
+              <Button asChild className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                  <User className="mr-1.5 h-3.5 w-3.5" />
+                  Dashboard
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button variant="outline" asChild className="w-full">
+                  <Link href="/login" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
+                </Button>
+                <Button asChild className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                  <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>Sign Up</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       )}
